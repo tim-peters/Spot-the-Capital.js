@@ -15,7 +15,7 @@ function cityClass(id) {
 		}
 		else
 			console.log("updating html element (city) / "+that.name);
-		that.element.innerHTML = that.name+" <span>"+that.time+"</span>";
+		that.element.innerHTML = that.name+"<br><span>"+that.time+"</span>";
 		that.update();
 		//setTimeout(function() { that.reset(); that.update(); }, timePerCity*1000);
 	}
@@ -59,7 +59,7 @@ function cityClass(id) {
 
 	that.reset = function() {
 		that.time = 0.0;
-		that.pos = [Math.random()*100, Math.random()*100];
+		that.pos = [Math.random()*90+5, Math.random()*90+5];
 		var key = "";
 		do {
 			key = randomCity();

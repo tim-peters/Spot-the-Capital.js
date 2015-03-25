@@ -1,3 +1,9 @@
+body {
+	background:#eee;
+	color:#222;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
 .player {
 	position: absolute;
 	transition:all 1s;
@@ -35,4 +41,11 @@
 .city {
 	transform:translate(-50%,-50%);
 	position: absolute;
+	padding:5px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.city span {
+	font-weight: normal;
 }

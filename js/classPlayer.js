@@ -13,7 +13,7 @@ function playerClass(id) {
 	that.show = function() {
 		that.element = document.createElement("DIV");
 		that.element.className = "player";
-		that.element.innerHTML = "Player "+(that.id+1)+" | "+that.points+"/"+that.time;
+		that.element.innerHTML = "Player "+(that.id+1)+" ("+that.key+") | "+that.points+"/"+that.time;
 		switch(that.id) {
 			case 1:
 				that.element.style.top = 0;

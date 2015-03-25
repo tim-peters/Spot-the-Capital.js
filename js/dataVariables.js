@@ -1,4 +1,4 @@
-var amountPlayers = 2,
+var amountPlayers = 4,
 	timePerCity = 5,
 	progressGoal = 7,
 	maxAmountCities = 5,
