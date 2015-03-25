@@ -1,0 +1,38 @@
+.player {
+	position: absolute;
+	transition:all 1s;
+	animation:none;
+}
+
+
+.failed {
+	animation:bgFlashRed 3s;
+}
+
+
+@keyframes bgFlashRed {
+    0%   {background-color: red;}
+    100% {background-color: inherit;}
+}
+
+.succeed {
+	animation:bgFlashGreen 3s;
+}
+
+@keyframes bgFlashGreen {
+    0%   {background-color: green;}
+    100% {background-color: inherit;}
+}
+
+#country {
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:0;
+	transform:translate(-50%,-50%);
+}
+
+.city {
+	transform:translate(-50%,-50%);
+	position: absolute;
+}
