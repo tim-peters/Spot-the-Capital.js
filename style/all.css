@@ -5,6 +5,7 @@ body {
 }
 
 .player {
+	padding:10px;
 	position: absolute;
 	transition:all 1s;
 	animation:none;
@@ -23,6 +24,10 @@ body {
 
 .succeed {
 	animation:bgFlashGreen 3s;
+}
+
+.winner {
+	animation:bgFlashGreen 1.5s infinite;
 }
 
 @keyframes bgFlashGreen {

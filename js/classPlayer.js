@@ -39,7 +39,7 @@ function playerClass(id) {
 	}
 
 	that.update = function() {
-		that.element.innerHTML = "Player "+(that.id+1)+" | "+that.points+"/"+Math.round((that.time += 0.1)*10)/10;;
+		that.element.innerHTML = "Player "+(that.id+1)+" ("+that.key+") | "+that.points+"/"+Math.round((that.time += 0.1)*10)/10;;
 	}
 
 	that.addScore = function(score, time) {

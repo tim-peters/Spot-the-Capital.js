@@ -56,13 +56,22 @@ function clearCities() {
 	displayedCities = [];
 }
 
+function scoreCalculation(a, b) {
+	var scoreA = (a.time >= 1) ? a.points/a.time : a.points;
+	var scoreB = (b.time >= 1) ? b.points/b.time : b.points;
+	return scoreB - scoreA;
+}
+
 function showResults() {
-	// FIXME fill me
+	players.sort(scoreCalculation);
+	console.dir(players);
+	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
+	players[0].element.classList.add("winner");
 }
 
 function nextStep() {
 	clearCities();
-	if(progress++ < progressGoal && progress < countriesData.length)
+	if(++progress < progressGoal && progress < countriesData.length)
 		changeCountry();
 	else
 		showResults();
