@@ -7,13 +7,21 @@ body {
 .player {
 	padding:10px;
 	position: absolute;
-	transition:all 1s;
-	animation:none;
+	-webkit-transition:all 1s;
+	        transition:all 1s;
+	-webkit-animation:none;
+	        animation:none;
+}
+
+.failed {
+	-webkit-animation:bgFlashRed 3s;
+	        animation:bgFlashRed 3s;
 }
 
 
-.failed {
-	animation:bgFlashRed 3s;
+@-webkit-keyframes bgFlashRed {
+    0%   {background-color: red;}
+    100% {background-color: inherit;}
 }
 
 
@@ -23,11 +31,18 @@ body {
 }
 
 .succeed {
-	animation:bgFlashGreen 3s;
+	-webkit-animation:bgFlashGreen 3s;
+	        animation:bgFlashGreen 3s;
 }
 
 .winner {
-	animation:bgFlashGreen 1.5s infinite;
+	-webkit-animation:bgFlashGreen 1.5s infinite;
+	        animation:bgFlashGreen 1.5s infinite;
+}
+
+@-webkit-keyframes bgFlashGreen {
+    0%   {background-color: green;}
+    100% {background-color: inherit;}
 }
 
 @keyframes bgFlashGreen {

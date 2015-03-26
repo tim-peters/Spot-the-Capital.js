@@ -1,6 +1,6 @@
 var amountPlayers = 4,
 	timePerCity = 5,
-	progressGoal = 1,
+	progressGoal = 4,
 	maxAmountCities = 5,
 //------------- do not change anything beyond this line
 players = [],
