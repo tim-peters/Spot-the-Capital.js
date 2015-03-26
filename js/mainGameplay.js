@@ -1,5 +1,5 @@
-function resetGame() {
-	console.log("resetGame");
+function clearGame() {
+	console.log("clearGame");
 	players = [];
 	for(var n = 0;n<amountPlayers;n++)
 		players.push(new playerClass(n));
@@ -24,7 +24,7 @@ function runGame() {
 		{
 			displayCityWithDelay(n);
 		}
-		else // shoudn't be a possible way...
+		else // shoudn't be a possible anyway...
 			displayedCities[n].reset();
 	}
 	isRunning = true;
@@ -33,7 +33,7 @@ function runGame() {
 function startGame() {
 	console.log("startGame");
 
-	resetGame();
+	clearGame();
 
 	for(var n = 0;n<amountPlayers;n++)
 	{
@@ -57,9 +57,18 @@ function clearCities() {
 }
 
 function scoreCalculation(a, b) {
-	var scoreA = (a.time >= 1) ? a.points/a.time : a.points;
-	var scoreB = (b.time >= 1) ? b.points/b.time : b.points;
-	return scoreB - scoreA;
+/*	if(a.points != 0 && b.points != 0)
+	{*/	
+		var scoreA = (a.time >= 1) ? a.points/a.time : a.points;
+		var scoreB = (b.time >= 1) ? b.points/b.time : b.points;
+		return scoreB - scoreA;
+/*	}
+	else
+	{
+		var scoreA = a.time;
+		var scoreB = b.time;		
+		return scoreA - scoreB;
+	}*/
 }
 
 function showResults() {
@@ -67,6 +76,13 @@ function showResults() {
 	console.dir(players);
 	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
 	players[0].element.classList.add("winner");
+	document.body.innerHTML += "<span onClick='resetGame();'>RESTART</span>";
+}
+
+function resetGame() {
+	clearGame();
+	document.body.innerHTML = "";
+	start();
 }
 
 function nextStep() {
@@ -110,7 +126,7 @@ function checkAnswer(id) {
 
 document.onkeydown = checkKey;
 function checkKey(e) {
-    //e = e || window.event;
+    e = e || window.event;
 
     for(var n = 0;n<keys.length && isRunning;n++)
     {
