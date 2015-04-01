@@ -39,6 +39,12 @@ function startGame() {
 	{
 		players[n].show();
 	}
+
+	progressBar = document.createElement("progress");
+	progressBar.setAttribute("max", progressGoal);
+	progressBar.value = progress;
+	document.body.appendChild(progressBar);
+
 	countryElement = document.createElement("H1");
 	countryElement.id = "country";
 	countryElement.innerHTML = countriesData[displayedCountry].country;
@@ -74,6 +80,7 @@ function scoreCalculation(a, b) {
 function showResults() {
 	players.sort(scoreCalculation);
 	console.dir(players);
+	removeElement(progressBar);
 	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
 	players[0].element.classList.add("winner");
 	document.body.innerHTML += "<span onClick='resetGame();'>RESTART</span>";
@@ -88,7 +95,10 @@ function resetGame() {
 function nextStep() {
 	clearCities();
 	if(++progress < progressGoal && progress < countriesData.length)
+	{
+		progressBar.value = progress;
 		changeCountry();
+	}
 	else
 		showResults();
 }

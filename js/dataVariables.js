@@ -323,7 +323,8 @@ countriesData = [
 ],
 playerHasWon = -1,
 displayedCountry = -1,
-countryElement = {};
+countryElement = {},
+progressBar = {},
 displayedCities = [],
 displayedCountries = [],
 isRunning = false,

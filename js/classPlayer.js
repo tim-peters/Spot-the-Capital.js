@@ -44,7 +44,7 @@ function playerClass(id) {
 
 	that.addScore = function(score, time) {
 		that.points += score;
-		that.time += time;
+		that.time += parseFloat(time);
 		that.update();
 
 		if(score > 0)
