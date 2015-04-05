@@ -65,8 +65,8 @@ function clearCities() {
 function scoreCalculation(a, b) {
 /*	if(a.points != 0 && b.points != 0)
 	{*/	
-		var scoreA = (a.time >= 1) ? a.points/a.time : a.points;
-		var scoreB = (b.time >= 1) ? b.points/b.time : b.points;
+		var scoreA = a.getScore();
+		var scoreB = b.getScore();
 		return scoreB - scoreA;
 /*	}
 	else

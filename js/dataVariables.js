@@ -1,5 +1,5 @@
-var amountPlayers = 4,
-	timePerCity = 5,
+var amountPlayers = 2,
+	timePerCity = 3,
 	progressGoal = 4,
 	maxAmountCities = 5,
 //------------- do not change anything beyond this line

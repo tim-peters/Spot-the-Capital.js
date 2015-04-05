@@ -13,7 +13,7 @@ function playerClass(id) {
 	that.show = function() {
 		that.element = document.createElement("DIV");
 		that.element.className = "player";
-		that.element.innerHTML = "Player "+(that.id+1)+" ("+that.key+") | "+that.points+"/"+that.time;
+		that.update();
 		switch(that.id) {
 			case 1:
 				that.element.style.top = 0;
@@ -39,7 +39,7 @@ function playerClass(id) {
 	}
 
 	that.update = function() {
-		that.element.innerHTML = "Player "+(that.id+1)+" ("+that.key+") | "+that.points+"/"+Math.round((that.time += 0.1)*10)/10;;
+		that.element.innerHTML = "<strong>Player "+(that.id+1)+" ("+that.key+")</strong><br>\nPoints: "+that.points+" / Time: "+Math.round(that.time*10)/10+"<br>Score: "+that.getScore();//Math.round((that.time += 0.1)*10)/10;;
 	}
 
 	that.addScore = function(score, time) {
@@ -61,5 +61,9 @@ function playerClass(id) {
 			that.element.offsetWidth = that.element.offsetWidth; // trigger reflow (necessary for restarting the animation)
 			that.element.classList.add("failed"); // start new animation
 		}
+	}
+
+	that.getScore = function() {
+		return (that.time >= 1) ? Math.round(that.points/that.time*100)/100 : that.points;
 	}
 }
