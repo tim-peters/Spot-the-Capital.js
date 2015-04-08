@@ -4,13 +4,7 @@ function start() {
 	content += "<div class=\"startScreen\">";
 	
 		content += "<h1>Spot the Capital</h1>";
-
-		content += "<div class=\"rules\">";
-			content += "<strong>The rules</strong>";
-			content += "<p>The game’s goal is to spot the capital cities of the displayed countries. To spot a capital players must push their assigned buttons as fast as possible when the correct city is displayed.</p>";
-			content += "<p>It is to avoid to press the button for not-capitals as well as missing to press when the capital is displayed.</p>";
-			content += "<p>Each players score is calculated as a relation of scored points (spotted capitals minus mistakes) and time needed.</p>";
-		content += "</div>";
+		
 		content += "<div class=\"explanation\">";
 			content += "<strong>Find the bees to collect honey for the picnic!</strong>";
 			content += "<p>"
@@ -38,8 +32,17 @@ function start() {
 				content += "<input type='number' min='0.5' max='30' name='timePerCity' value='"+timePerCity+"'>";
 			content += "</p>";
 
-			content += "<input type=\"button\" onClick=\"startSubmit()\" value=\"start game!\">";
+			content += "<p>";
+				content += "<input type=\"button\" onClick=\"startSubmit()\" value=\"start game!\">";
+			content += "</p>";
 
+		content += "</div>";
+
+		content += "<div class=\"rules\">";
+			content += "<strong>The rules</strong>";
+			content += "<p>The game’s goal is to spot the capital cities of the displayed countries. To spot a capital players must push their assigned buttons as fast as possible when the correct city is displayed.</p>";
+			content += "<p>It is to avoid to press the button for not-capitals as well as missing to press when the capital is displayed.</p>";
+			content += "<p>Each players score is calculated as a relation of scored points (spotted capitals minus mistakes) and time needed.</p>";
 		content += "</div>";
 
 	content += "</div>";
