@@ -40,10 +40,13 @@ function startGame() {
 		players[n].show();
 	}
 
-	progressBar = document.createElement("progress");
-	progressBar.setAttribute("max", progressGoal);
-	progressBar.value = progress;
-	document.body.appendChild(progressBar);
+	honey_jam = document.createElement("DIV");
+	honey_jam.classList.add("honey");
+
+	progressBar = document.createElement("DIV");
+	progressBar.style.height = (progress/progressGoal*209) + "px";
+	honey_jam.appendChild(progressBar);
+	document.body.appendChild(honey_jam);
 
 	countryElement = document.createElement("H1");
 	countryElement.id = "country";
@@ -80,7 +83,7 @@ function scoreCalculation(a, b) {
 function showResults() {
 	players.sort(scoreCalculation);
 	console.dir(players);
-	removeElement(progressBar);
+	removeElement(honey_jam);
 	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
 	players[0].element.classList.add("winner");
 	document.body.innerHTML += "<span onClick='resetGame();'>RESTART</span>";
@@ -93,10 +96,10 @@ function resetGame() {
 }
 
 function nextStep() {
+	document.body.classList.remove("show");
 	clearCities();
 	if(++progress < progressGoal && progress < countriesData.length)
 	{
-		progressBar.value = progress;
 		changeCountry();
 	}
 	else
@@ -121,7 +124,9 @@ function checkAnswer(id) {
 	{
 		if(displayedCities[n] != undefined && displayedCities[n].key == 0)
 		{
-			    displayedCities[n].element.style.color = "green";
+			    document.body.classList.add("show");
+			    progressBar.style.height = ((progress+1)/progressGoal*209) + "px";
+
 			    players[id].addScore(1,displayedCities[n].time);
 			    return true;
 		}
@@ -142,20 +147,24 @@ function checkKey(e) {
     {
     	if(e.keyCode == keys[n].keycode && n < amountPlayers)
     	{
-    		console.log("Player "+players[n].id+" answered!");
-    		if(checkAnswer(n))
+    		console.log("Player "+ (players[n].id+1) +" answered!");
+     		isRunning = false;
+   			if(checkAnswer(n))
     		{
-    			isRunning = false;
     			setTimeout("nextStep();", 1500);
     		}
     		else
     		{
-    			isRunning = false;
-    			setTimeout(function() {isRunning = true;}, 500);
+				document.body.classList.add("show");
+    			setTimeout(function() {isRunning = true;document.body.classList.remove("show");}, 1000);
     		}
     		return true;
        	}
     }
-    if(e.keyCode == 32)
-    	isRunning = !isRunning;
+    if(e.keyCode == 32 && !document.body.classList.contains("show"))
+    {
+       	isRunning = !isRunning;
+       	document.body.classList.toggle("paused");
+       	return false;
+    }
 }

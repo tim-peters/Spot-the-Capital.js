@@ -324,6 +324,7 @@ countriesData = [
 playerHasWon = -1,
 displayedCountry = -1,
 countryElement = {},
+honey_jam = {},
 progressBar = {},
 displayedCities = [],
 displayedCountries = [],

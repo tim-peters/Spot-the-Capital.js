@@ -15,7 +15,7 @@ function cityClass(id) {
 		}
 		else
 			console.log("updating html element (city) / "+that.name);
-		that.element.innerHTML = that.name+"<br><span>"+that.time+"</span>";
+		that.element.innerHTML = that.name+" <span>"+that.time+"</span>";
 		that.update();
 		//setTimeout(function() { that.reset(); that.update(); }, timePerCity*1000);
 	}
@@ -31,7 +31,8 @@ function cityClass(id) {
 			var timer = setInterval(function(t) {
 				if(isRunning && t.element != undefined)
 				{
-					t.element.getElementsByTagName("span")[0].innerHTML = Math.round((t.time += 0.1)*10)/10;
+					var actual_time;
+					t.element.getElementsByTagName("span")[0].innerHTML = (((actual_time = Math.round((t.time += 0.1)*10)/10)%1) != 0) ? actual_time : actual_time+".0";
 					if(t.time >= timePerCity)
 					{
 						clearInterval(timer);
@@ -40,8 +41,8 @@ function cityClass(id) {
 							for(var n=0;n<players.length;n++)
 								players[n].addScore(0,timePerCity);
 							isRunning = false;
-							t.element.classList.add("failed");
-							setTimeout(function() {isRunning = true;t.element.classList.remove("failed");t.reset();},1500);
+							document.body.classList.add("show");
+							setTimeout(function() {isRunning = true;document.body.classList.remove("show");t.reset();},1500);
 							return;
 						}
 						t.reset();
@@ -69,6 +70,8 @@ function cityClass(id) {
 		//console.log("created city ("+that.name+")");
 
 		that.show();
+		if(that.key == 0) that.element.classList.add("capital");
+		else that.element.classList.remove("capital");
 	};
 	that.reset();
 }

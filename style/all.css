@@ -1,8 +1,15 @@
 body {
-	background:#eee;
+	width:100%;
+	height:100%;
+	background-image:url("../img/bg.jpg");
+	background-size:cover;
 	color:#222;
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
+	overflow: hidden;
+}
+
+body.paused {
 }
 
 .player {
@@ -55,18 +62,70 @@ body {
 	position:absolute;
 	left:50%;
 	top:50%;
+	width:190px;
 	margin:0;
 	transform:translate(-50%,-50%);
 }
 
+.honey {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 298px;
+    background: url("../img/honey_jar.png");
+    transform: translate(-57%, -50%);
+}
+.honey > div {
+    position: absolute;
+    bottom: 13px;
+    width: 233px;
+    height: 209px;
+    margin-left: 56px;
+    background: url("../img/honey.png") no-repeat bottom;
+    transition:all 1s ease;
+}
+
 .city {
-	transform:translate(-50%,-50%);
 	position: absolute;
-	padding:5px;
+	min-width: 140px;
+	margin:-50px -75px;
+	padding:5px 5px 75px;
 	text-align: center;
 	font-weight: bold;
+	background: url("../img/bug.png") bottom left no-repeat;
+	animation:Orbit_cw 2s linear infinite;
 }
+
+.city:nth-child(odd) {
+	animation:Orbit_acw 2s linear infinite;
+}
+
+.paused .city {
+	animation-play-state: paused;
+}
+
+.show .city {
+	background: url("../img/fly.png") bottom left no-repeat;
+	animation-play-state: paused;
+
+}
+
+.show .city.capital {
+	background: url("../img/bee.png") bottom left no-repeat;
+}
+
 
 .city span {
 	font-weight: normal;
+}
+
+@keyframes Orbit_cw {
+    from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes Orbit_acw {
+    from { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+    to   { transform: rotate(0deg) translateX(50px) rotate(0deg); }
 }
