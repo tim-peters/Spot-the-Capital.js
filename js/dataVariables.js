@@ -155,6 +155,26 @@ countriesData = [
 		]
 	},
 	{
+		country: "Ireland",
+		cities: [
+			"Dublin",
+			"Cork",
+			"Limerick",
+			"Galway",
+			"Waterford",
+			"Drogheda",
+			"Dundalk",
+			"Swords",
+			"Bray",
+			"Navan",
+			"Ennis",
+			"Kilkenny",
+			"Tralee",
+			"Carlowis",
+			"Newbridge"
+		]
+	}
+	{
 		country: "Italia",
 		cities: [
 			"Rome",
