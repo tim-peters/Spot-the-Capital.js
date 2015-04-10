@@ -1,3 +1,4 @@
+/* creates the neccessary html content for the startscreen */
 function start() {
 	var content = "";
 
@@ -8,7 +9,7 @@ function start() {
 		content += "<div class=\"explanation\">";
 			content += "<strong>Find the bees to collect honey for the picnic!</strong>";
 			content += "<p>"
-			content += "It is hard to distinguish bees from flies agains the sun light. Furtuneatly just the bees can tell you the capital cities of each country. <br>So be fast and push your button when you see the correct city."
+			content += "It is hard to distinguish bees from flies agains the sun light. Fortunately just the bees can tell you the capital cities of each country. <br>So be fast and push your button when you see the correct city."
 			content += "</p>"
 			content += "<span class=\"bug\" style=\"background-image:url(./img/bee.png)\"></span>";
 			content += "<span class=\"bug\" style=\"background-image:url(./img/bug.png)\"></span>";
@@ -50,6 +51,7 @@ function start() {
 	document.body.innerHTML = content;
 }
 
+/* writes the determined values in the corresponding variables and runs the startGame()-Function */
 function startSubmit() {
 	amountPlayers = document.getElementsByName("amountPlayers")[0].value;
 	progressGoal = document.getElementsByName("progressGoal")[0].value;

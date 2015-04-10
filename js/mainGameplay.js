@@ -1,40 +1,24 @@
+/* reset function: cleares and prepares all variables to start a new game */
 function clearGame() {
 	console.log("clearGame");
 	players = [];
+	/* instatiate a player object for each player and write them in an array */
 	for(var n = 0;n<amountPlayers;n++)
 		players.push(new playerClass(n));
 	
-	playerHasWon = -1;
 	displayedCountry = Math.round(Math.random()*(countriesData.length-1));
 	displayedCities = [];
 	displayedCountries = [];
 	progress = 0;
 }
 
-function runGame() {
-	function displayCityWithDelay(n) { 
-		setTimeout(function() {
-			displayedCities[n] = new cityClass(n); 
-			//console.log(n)
-		},Math.random()*timePerCity*1000);
-	}
-	for(var n = 0;n<maxAmountCities;n++)
-	{
-		if(displayedCities[n] == undefined)
-		{
-			displayCityWithDelay(n);
-		}
-		else // shoudn't be a possible anyway...
-			displayedCities[n].reset();
-	}
-	isRunning = true;
-}
-
+/* clears & creates the necessary html elements to run the game */
 function startGame() {
 	console.log("startGame");
 
 	clearGame();
 
+	// displayes the players
 	for(var n = 0;n<amountPlayers;n++)
 	{
 		players[n].show();
@@ -56,6 +40,29 @@ function startGame() {
 	runGame();
 }
 
+/* starts the game */
+function runGame() {
+	/* creates a city object after a period which can be randomly between 0 and the time a city should be displayed. This avoids all cities to appear at the same time or in waves */
+	function displayCityWithDelay(n) { 
+		setTimeout(function() {
+			displayedCities[n] = new cityClass(n); 
+			//console.log(n)
+		},Math.random()*timePerCity*1000);
+	}
+	// actually create cities
+	for(var n = 0;n<maxAmountCities;n++)
+	{
+		if(displayedCities[n] == undefined)
+		{
+			displayCityWithDelay(n);
+		}
+		else // shoudn't be a possible anyways...
+			displayedCities[n].reset();
+	}
+	isRunning = true;
+}
+
+/* hides and unsets all cities */
 function clearCities() {
 	for(var n=0;n<displayedCities.length;n++)
 	{
@@ -65,6 +72,7 @@ function clearCities() {
 	displayedCities = [];
 }
 
+/* shows a score relation between two players. Necessary to determine which player won */
 function scoreCalculation(a, b) {
 /*	if(a.points != 0 && b.points != 0)
 	{*/	
@@ -80,21 +88,7 @@ function scoreCalculation(a, b) {
 	}*/
 }
 
-function showResults() {
-	players.sort(scoreCalculation);
-	console.dir(players);
-	removeElement(honey_jam);
-	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
-	players[0].element.classList.add("winner");
-	document.body.innerHTML += "<span onClick='resetGame();'>RESTART</span>";
-}
-
-function resetGame() {
-	clearGame();
-	document.body.innerHTML = "";
-	start();
-}
-
+/* leads to the next step (next city or result screen) after a right answer */
 function nextStep() {
 	document.body.classList.remove("show");
 	clearCities();
@@ -106,8 +100,9 @@ function nextStep() {
 		showResults();
 }
 
+/* exchanges the displayed country (while preventing doubling)*/
 function changeCountry() {
-	console.log("next Country");
+	console.log("next country");
 
 	displayedCountries.push(displayedCountry);
 
@@ -119,7 +114,9 @@ function changeCountry() {
 	runGame();
 }
 
+/* checks whether a answer (pressed button) is right or wrong */
 function checkAnswer(id) {
+	// check whether the capital is actually displayed...
 	for(var n=0;n<displayedCities.length;n++)
 	{
 		if(displayedCities[n] != undefined && displayedCities[n].key == 0)
@@ -139,6 +136,24 @@ function checkAnswer(id) {
 	return false;
 }
 
+/* show result screen */
+function showResults() {
+	players.sort(scoreCalculation);
+	console.dir(players);
+	removeElement(honey_jam);
+	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
+	players[0].element.classList.add("winner");
+	document.body.innerHTML += "<span onClick='resetGame();' style='cursor:pointer;'>RESTART</span>";
+}
+
+/* reset the game */
+function resetGame() {
+	clearGame();
+	document.body.innerHTML = "";
+	start();
+}
+
+/* react to keyboard input */
 document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;

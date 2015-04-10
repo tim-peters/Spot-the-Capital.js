@@ -2,27 +2,36 @@ var amountPlayers = 2,
 	timePerCity = 3,
 	progressGoal = 4,
 	maxAmountCities = 5,
+	keys = [
+		{
+			name: "Q",
+			keycode: "81"
+		},
+		{
+			name: "P",
+			keycode: "80"
+		},
+		{
+			name: "X",
+			keycode: "88"
+		},
+		{
+			name: ".",
+			keycode: "190"
+		}
+
+	],
 //------------- do not change anything beyond this line
 players = [],
-keys = [
-	{
-		name: "Q",
-		keycode: "81"
-	},
-	{
-		name: "P",
-		keycode: "80"
-	},
-	{
-		name: "X",
-		keycode: "88"
-	},
-	{
-		name: ".",
-		keycode: "190"
-	}
-
-],
+displayedCountry = -1,
+countryElement = {},
+honey_jam = {},
+progressBar = {},
+displayedCities = [],
+displayedCountries = [],
+isRunning = false,
+progress = 0,
+amountCitiesSinceCapital = 0,
 countriesData = [
 	{
 		country: "Australia",
@@ -320,14 +329,4 @@ countriesData = [
 			"Memphis"
 		]
 	}
-],
-playerHasWon = -1,
-displayedCountry = -1,
-countryElement = {},
-honey_jam = {},
-progressBar = {},
-displayedCities = [],
-displayedCountries = [],
-isRunning = false,
-progress = 0,
-amountCitiesSinceCapital = 0;
+];

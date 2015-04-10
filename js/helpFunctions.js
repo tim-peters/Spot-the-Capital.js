@@ -33,7 +33,7 @@ function countryHasBeenDisplayed(key) {
 }
 
 // try to remove an html element.
-// this function seems to be necessary because removing an element sometimes doesn't work (under investigation) :(
+// this function seems to be necessary because removing an element sometimes doesn't work (under investigation. might be a chrome bug) :(
 function removeElement(elmt) {
 	try {
 		elmt.parentNode.removeChild(elmt)
