@@ -7,9 +7,9 @@ function start() {
 		content += "<h1>Spot the Capital</h1>";
 		
 		content += "<div class=\"explanation\">";
-			content += "<strong>Find the bees to collect honey for the picnic!</strong>";
+			content += "<strong>Find the bees to collect honey for a picnic!</strong>";
 			content += "<p>"
-			content += "It is hard to distinguish bees from flies agains the sun light. Fortunately just the bees can tell you the capital cities of each country. <br>So be fast and push your button when you see the correct city."
+			content += "It is hard to distinguish bees from flies agains sun light. Fortunately just the bees can tell you the capital cities of each country. <br>So be fast and push your button when you see the correct city."
 			content += "</p>"
 			content += "<span class=\"bug\" style=\"background-image:url(./img/bee.png)\"></span>";
 			content += "<span class=\"bug\" style=\"background-image:url(./img/bug.png)\"></span>";

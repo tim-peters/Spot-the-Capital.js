@@ -173,7 +173,7 @@ countriesData = [
 			"Carlowis",
 			"Newbridge"
 		]
-	}
+	},
 	{
 		country: "Italia",
 		cities: [
