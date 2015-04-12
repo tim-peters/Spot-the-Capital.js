@@ -17,25 +17,26 @@ function start() {
 		content += "</div>";
 
 		content += "<div class=\"preferences\">";
+			content += "<form method=\"POST\" action=\"\"  onSubmit=\"startSubmit();return false\">";
+				content += "<p>";
+					content += "Amount of players<br>";
+					content += "<input type='number' min='1' max='4' name='amountPlayers' value='"+amountPlayers+"'>";
+				content += "</p>";
 
-			content += "<p>";
-				content += "Amount of players<br>";
-				content += "<input type='number' min='1' max='4' name='amountPlayers' value='"+amountPlayers+"'>";
-			content += "</p>";
+				content += "<p>";
+					content += "Steps to win<br>";
+					content += "<input type='number' min='1' max='"+countriesData.length+"' name='progressGoal' value='"+progressGoal+"'>";
+				content += "</p>";
 
-			content += "<p>";
-				content += "Steps to win<br>";
-				content += "<input type='number' min='1' max='"+countriesData.length+"' name='progressGoal' value='"+progressGoal+"'>";
-			content += "</p>";
+				content += "<p>";
+					content += "Time per city<br>";
+					content += "<input type='number' min='0.5' max='15' step='0.1' name='timePerCity' value='"+timePerCity+"'>";
+				content += "</p>";
 
-			content += "<p>";
-				content += "Time per city<br>";
-				content += "<input type='number' min='0.5' max='30' name='timePerCity' value='"+timePerCity+"'>";
-			content += "</p>";
-
-			content += "<p>";
-				content += "<input type=\"button\" onClick=\"startSubmit()\" value=\"start game!\">";
-			content += "</p>";
+				content += "<p>";
+					content += "<input type=\"submit\" value=\"start game!\">";
+				content += "</p>";
+			content += "</form>";
 
 		content += "</div>";
 

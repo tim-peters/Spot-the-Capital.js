@@ -1,7 +1,7 @@
 // Initial values
 var amountPlayers = 2, // How many players?
 	timePerCity = 4, // How much time to recognize a city?
-	progressGoal = 4, // How many recognized cities are needed to finish the game?
+	progressGoal = 5, // How many recognized cities are needed to finish the game?
 	maxAmountCities = 5, // How many cities should be displayed around the country at the same time?
 	keys = [
 		{
