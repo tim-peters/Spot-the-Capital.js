@@ -63,11 +63,6 @@ body.paused {
 	        animation:bgFlashGreen 3s;
 }
 
-.winner {
-	-webkit-animation:bgFlashGreen 1.5s infinite;
-	        animation:bgFlashGreen 1.5s infinite;
-}
-
 #country {
 	position:absolute;
 	left:50%;
@@ -212,6 +207,25 @@ body.paused {
 .startScreen input[type='submit']:active {
 	position:relative;
 	top:1px;
+}
+
+/* RESULT SCREEN */
+
+
+.winner {
+	-webkit-animation:bgFlashGreen 1.5s infinite;
+	        animation:bgFlashGreen 1.5s infinite;
+}
+
+#country.result {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    width: auto;
+}
+.result span {
+    display: block;
+    float: none;
+    font-size: 16px;
 }
 
 /* ANIMATION KEYFRAMES */

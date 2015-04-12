@@ -141,7 +141,8 @@ function showResults() {
 	players.sort(scoreCalculation);
 	console.dir(players);
 	removeElement(honey_jam);
-	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins!";
+	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins! <span>with a score of "+ players[0].getScore() +"</span>";
+	countryElement.classList.add("result")
 	players[0].element.classList.add("winner");
 	document.body.innerHTML += "<span onClick='resetGame();' style='cursor:pointer;'>RESTART</span>";
 }
@@ -175,7 +176,11 @@ function checkKey(e) {
     		return true;
        	}
     }
-    if(e.keyCode == 32 && !document.body.classList.contains("show"))
+    if(e.keyCode == 13 && countryElement.classList.contains("result"))
+    {
+    	resetGame();
+    }
+    else if(e.keyCode == 32 && !document.body.classList.contains("show"))
     {
        	isRunning = !isRunning;
        	document.body.classList.toggle("paused");
