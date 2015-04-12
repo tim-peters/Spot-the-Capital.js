@@ -14,7 +14,7 @@ function playerClass(id) {
 
 	/* updates the html elment depending on the informations stored in the attributes of this class */
 	that.update = function() {
-		that.element.innerHTML = "<strong>Player "+(that.id+1)+" ("+that.key+")</strong><br>\nPoints: "+that.points+" / Time: "+Math.round(that.time*10)/10+"<br>Score: "+that.getScore();//Math.round((that.time += 0.1)*10)/10;;
+		that.element.innerHTML = "<strong>Player "+(that.id+1)+"</strong><br>\nPoints: "+that.points+" / Time: "+Math.round(that.time*10)/10+"<br>Score: "+that.getScore()+"<span class=\"key\">"+that.key+"</span>";//Math.round((that.time += 0.1)*10)/10;;
 	}
 
 	/* creates a html element in the site's body */
@@ -44,6 +44,9 @@ function playerClass(id) {
 			break;
 		}
 		document.body.appendChild(that.element);
+
+		// add click support (e.g. as fallback for devices without keyboard)
+		that.element.addEventListener('click', function() { checkKey({keyCode:that.keycode}); }, false); // onCLick: trigger keyboard event
 	}
 
 	/* changes the players score values (points & time) */

@@ -1,5 +1,5 @@
 var amountPlayers = 2,
-	timePerCity = 3,
+	timePerCity = 4,
 	progressGoal = 4,
 	maxAmountCities = 5,
 	keys = [

@@ -25,7 +25,32 @@ body.paused {
 	-webkit-animation:none;
 	        animation:none;
 	background: rgba(255,255,255,0.8);
-	border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 10px 10px 10px 85px;
+    text-align: left;
+    cursor:pointer;
+}
+
+.paused .player, .show .player { /* prevent player elements from appearing clickable when they are actually not */
+	cursor:default;
+}
+
+.key {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: -49px -68px;
+    padding: 15px 15px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    overflow: hidden;
+    color: #6b6b6b;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #ccc;
+    border-radius: 7px;
 }
 
 .failed {
@@ -54,7 +79,7 @@ body.paused {
 	        transform:translate(-50%,-50%);
 }
 
-.honey {
+.honey { /* honey jar */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -65,7 +90,7 @@ body.paused {
         -ms-transform: translate(-57%, -50%);
             transform: translate(-57%, -50%);
 }
-.honey > div {
+.honey > div { /* honey inside of the jar (progress bar) */
     position: absolute;
     bottom: 13px;
     width: 233px;
@@ -84,6 +109,7 @@ body.paused {
 	text-align: center;
 	font-weight: bold;
 	background: url("../img/bug.png") bottom left no-repeat;
+	z-index: 9;
 	-webkit-animation:Orbit_cw 2s linear infinite;
 	        animation:Orbit_cw 2s linear infinite;
 }
@@ -108,8 +134,12 @@ body.paused {
 	background: url("../img/bee.png") bottom left no-repeat;
 }
 
+.captal { /* capital city is always on top (=> always visible) */
+	z-index: 10;
+}
 
-.city span {
+
+.city span { /* timer */
 	font-weight: normal;
 }
 
