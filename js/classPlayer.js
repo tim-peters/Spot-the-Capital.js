@@ -73,6 +73,11 @@ function playerClass(id) {
 
 	/* returns the player's calculated score depending on points and time */
 	that.getScore = function() {
-		return (that.time >= 1) ? Math.round(that.points/that.time*100)/100 : that.points;
+		if(that.points == 0)
+			return 0;
+		else if(that.time < 1)
+			return Math.round(that.points*((1-that.time)+1)*100); // time under 1 sec increases the score (with a maximum factor of 2)
+		else
+			return Math.round(that.points/that.time*100); // time over 1 sec decreases the score (by division)
 	}
 }
