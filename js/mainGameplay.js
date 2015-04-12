@@ -148,9 +148,8 @@ function showResults() {
 
 /* reset the game */
 function resetGame() {
-	clearGame();
 	document.body.innerHTML = "";
-	start();
+	startGame();
 }
 
 /* react to keyboard input */
