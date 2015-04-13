@@ -139,9 +139,9 @@ function checkAnswer(id) {
 /* show result screen */
 function showResults() {
 	players.sort(scoreCalculation);
-	console.dir(players);
+	//console.dir(players);
 	removeElement(honey_jam);
-	countryElement.innerHTML = "Player "+(players[0].id + 1)+" wins! <span>with a score of "+ players[0].getScore() +"</span>";
+	countryElement.innerHTML = (amountPlayers > 1) ? "Player "+(players[0].id + 1)+" wins! <span>with a score of "+ players[0].getScore() +"</span>" : "Congratulations! <span>by recognizing "+progressGoal+" cities you reached a score of "+ players[0].getScore() +"</span>";
 	countryElement.classList.add("result")
 	players[0].element.classList.add("winner");
 	document.body.innerHTML += "<span onClick='resetGame();' style='cursor:pointer;'>RESTART</span>";
