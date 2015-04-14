@@ -287,7 +287,6 @@ countriesData = [
 			"Winterthur",
 			"St. Gallen",
 			"Lugano",
-			"Biel/Bienne",
 			"Thun",
 			"Köniz",
 			"La Chaux-de-Fonds",
