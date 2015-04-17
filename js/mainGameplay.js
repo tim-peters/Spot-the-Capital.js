@@ -34,14 +34,28 @@ function startGame() {
 
 	countryElement = document.createElement("H1");
 	countryElement.id = "country";
-	countryElement.innerHTML = countriesData[displayedCountry].country;
+	countryElement.classList.add("result");
+	countryElement.innerHTML = "When you spot the capital<br>press your key on the keyboard!";
 	document.body.appendChild(countryElement);
 
-	runGame();
+	/* start instruction */
+	var overlay = document.createElement("DIV");
+	overlay.classList.add("overlay");
+	document.body.appendChild(overlay);
+
+	document.body.classList.add("start");
+
+	// after 3sec start the main game
+	setTimeout("runGame();",5000);
 }
 
 /* starts the game */
 function runGame() {
+	/* reset/hide start instruction */
+	document.body.classList.remove("start");
+	countryElement.classList.remove("result");
+	countryElement.innerHTML = countriesData[displayedCountry].country;
+
 	/* creates a city object after a period which can be randomly between 0 and the time a city should be displayed. This avoids all cities to appear at the same time or in waves */
 	function displayCityWithDelay(n) { 
 		setTimeout(function() {
