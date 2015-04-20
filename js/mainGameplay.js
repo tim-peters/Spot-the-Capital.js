@@ -24,6 +24,7 @@ function startGame(restart) {
 		players[n].show();
 	}
 
+	/* create elements for gameplay & start instruction */
 	honey_jam = document.createElement("DIV");
 	honey_jam.classList.add("honey");
 
@@ -38,7 +39,6 @@ function startGame(restart) {
 	countryElement.innerHTML = "When you spot the capital<br>press your key on the keyboard!";
 	document.body.appendChild(countryElement);
 
-	/* start instruction */
 	var overlay = document.createElement("DIV");
 	overlay.classList.add("overlay");
 	document.body.appendChild(overlay);
