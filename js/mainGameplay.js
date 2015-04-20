@@ -59,19 +59,19 @@ function runGame() {
 	/* creates a city object after a period which can be randomly between 0 and the time a city should be displayed. This avoids all cities to appear at the same time or in waves */
 	function displayCityWithDelay(n) { 
 		setTimeout(function() {
-			displayedCities[n] = new cityClass(n); 
+			if(displayedCities[n] == undefined)
+			{
+				displayedCities[n] = new cityClass(n);
+			}
+			else // prevent ghost bees (cities which appear from earlier countries without any related object)
+				displayedCities[n].reset(); 
 			//console.log(n)
 		},Math.random()*timePerCity*1000);
 	}
 	// actually create cities
 	for(var n = 0;n<maxAmountCities;n++)
 	{
-		if(displayedCities[n] == undefined)
-		{
 			displayCityWithDelay(n);
-		}
-		else // shoudn't be a possible anyways...
-			displayedCities[n].reset();
 	}
 	isRunning = true;
 }
@@ -152,11 +152,15 @@ function checkAnswer(id) {
 
 /* show result screen */
 function showResults() {
+	isRunning = false;
+
 	players.sort(scoreCalculation);
-	//console.dir(players);
+	
+	console.dir(players);
+	
 	removeElement(honey_jam);
 	countryElement.innerHTML = (amountPlayers > 1) ? "Player "+(players[0].id + 1)+" wins! <span>with a score of "+ players[0].getScore() +"</span>" : "Congratulations! <span>by recognizing "+progressGoal+" cities you reached a score of "+ players[0].getScore() +"</span>";
-	countryElement.classList.add("result")
+	countryElement.classList.add("result");
 	players[0].element.classList.add("winner");
 	document.body.innerHTML += "<span onClick='resetGame();' style='cursor:pointer;'>RESTART</span>";
 }
@@ -171,33 +175,35 @@ function resetGame() {
 document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
-
-    for(var n = 0;n<keys.length && isRunning;n++)
+    if(!document.body.classList.contains("show") && !document.body.classList.contains("start") && !countryElement.classList.contains("result")) // while gameplay
     {
-    	if(e.keyCode == keys[n].keycode && n < amountPlayers)
-    	{
-    		console.log("Player "+ (players[n].id+1) +" answered!");
-     		isRunning = false;
-   			if(checkAnswer(n))
-    		{
-    			setTimeout("nextStep();", 1500);
-    		}
-    		else
-    		{
-				document.body.classList.add("show");
-    			setTimeout(function() {isRunning = true;document.body.classList.remove("show");}, 1000);
-    		}
-    		return true;
-       	}
-    }
-    if(e.keyCode == 13 && countryElement.classList.contains("result"))
+    	if(e.keyCode == 32) // Space Key
+	    {
+	       	isRunning = !isRunning;
+	       	document.body.classList.toggle("paused");
+	       	return false;
+	    }
+	    else for(var n = 0;n<keys.length && isRunning;n++)
+	    {
+	    	if(e.keyCode == keys[n].keycode && n < amountPlayers) // Player Keys
+	    	{
+	    		console.log("Player "+ (players[n].id+1) +" answered!");
+	     		isRunning = false;
+	   			if(checkAnswer(n))
+	    		{
+	    			setTimeout("nextStep();", 1500);
+	    		}
+	    		else
+	    		{
+					document.body.classList.add("show");
+	    			setTimeout(function() {isRunning = true;document.body.classList.remove("show");}, 1000);
+	    		}
+	    		return true;
+	       	}
+	    }
+	}
+    else if(e.keyCode == 13 && countryElement.classList.contains("result")) // Enter Key on result page
     {
     	resetGame();
-    }
-    else if(e.keyCode == 32 && !document.body.classList.contains("show"))
-    {
-       	isRunning = !isRunning;
-       	document.body.classList.toggle("paused");
-       	return false;
     }
 }
