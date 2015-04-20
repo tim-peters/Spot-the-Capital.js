@@ -13,7 +13,7 @@ function clearGame() {
 }
 
 /* clears & creates the necessary html elements to run the game */
-function startGame() {
+function startGame(restart) {
 	console.log("startGame");
 
 	clearGame();
@@ -45,8 +45,11 @@ function startGame() {
 
 	document.body.classList.add("start");
 
-	// after 3sec start the main game
-	setTimeout("runGame();",5000);
+	if(restart)
+		runGame();
+	else
+		// after 3sec start the main game
+		setTimeout("runGame();",5000);
 }
 
 /* starts the game */
@@ -59,12 +62,15 @@ function runGame() {
 	/* creates a city object after a period which can be randomly between 0 and the time a city should be displayed. This avoids all cities to appear at the same time or in waves */
 	function displayCityWithDelay(n) { 
 		setTimeout(function() {
-			if(displayedCities[n] == undefined)
+			if(!countryElement.classList.contains("result")) // prevent bees from appearing after the game has already been finished
 			{
-				displayedCities[n] = new cityClass(n);
+				if(displayedCities[n] == undefined)
+				{
+					displayedCities[n] = new cityClass(n);
+				}
+				else // prevent ghost bees (cities which appear from earlier countries without any related object)
+					displayedCities[n].reset(); 
 			}
-			else // prevent ghost bees (cities which appear from earlier countries without any related object)
-				displayedCities[n].reset(); 
 			//console.log(n)
 		},Math.random()*timePerCity*1000);
 	}
@@ -168,7 +174,7 @@ function showResults() {
 /* reset the game */
 function resetGame() {
 	document.body.innerHTML = "";
-	startGame();
+	startGame(true);
 }
 
 /* react to keyboard input */
