@@ -54,7 +54,7 @@ body.paused {
     cursor:pointer;
 }
 
-.paused .player, .show .player { /* prevent player elements from appearing clickable when they are actually not */
+.paused .player, .show .player { /* prevent player elements from appearing clickable when they are actually not (e.g. paused state) */
 	cursor:default;
 }
 

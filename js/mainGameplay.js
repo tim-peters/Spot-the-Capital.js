@@ -2,7 +2,7 @@
 function clearGame() {
 	console.log("clearGame");
 	players = [];
-	/* instatiate a player object for each player and write them in an array */
+	/* instantiate a player object for each player and write it into an array */
 	for(var n = 0;n<amountPlayers;n++)
 		players.push(new playerClass(n));
 	
@@ -45,11 +45,12 @@ function startGame(restart) {
 
 	document.body.classList.add("start");
 
-	if(restart)
-		runGame();
-	else
+	if(!restart)
 		// after 3sec start the main game
 		setTimeout("runGame();",5000);
+	else
+		// no instruction on REstart => no delay
+		runGame();
 }
 
 /* starts the game */

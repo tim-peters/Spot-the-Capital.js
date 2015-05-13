@@ -1,8 +1,8 @@
 
-/* return a city id randomly but at least every 30 times return the capial city id */
+/* return a city id randomly but at least every 25 times return the capial city id */
 function randomCity() {
 	var output;
-	if(amountCitiesSinceCapital > 30 || (output = Math.round(Math.random()*(countriesData[displayedCountry].cities.length-1))) == 0)
+	if(amountCitiesSinceCapital > 25 || (output = Math.round(Math.random()*(countriesData[displayedCountry].cities.length-1))) == 0)
 	{
 		amountCitiesSinceCapital = 0;	
 		return 0;
